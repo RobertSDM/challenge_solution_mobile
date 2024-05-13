@@ -9,7 +9,7 @@ const Login = ({ navigation }) => {
     return (
         <AuthLayout>
             <SafeAreaView className="pt-4 flex items-center w-full h-full">
-                <View className="bg-purple-700 absolute h-[45%] w-full flex justify-center items-center">
+                <View className="bg-purple-700 pt-16 absolute h-[70%] w-full flex items-center">
                     <Image
                         className="h-52 aspect-square object-scale-down"
                         source={require("../../assets/logo-MAI.png")}
