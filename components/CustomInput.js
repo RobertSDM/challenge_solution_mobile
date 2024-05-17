@@ -1,13 +1,37 @@
-import { View, Text, TextInput } from 'react-native'
-import React from 'react'
+import { View, Text, TextInput, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { Entypo } from "@expo/vector-icons";
 
-const CustomInput = ({text, style}) => {
-  return (
-    <View style={style}>
-      <Text>{text}</Text>
-      <TextInput placeholder={text} className="border px-4 py-2 rounded-md"/>
-    </View>
-  )
-}
+const styles = StyleSheet.create({
+    icon: {
+        position: "absolute",
+        right: 10,
+        top: "50%",
+    },
+});
 
-export default CustomInput
+const CustomInput = ({ text, style, typePassword = false }) => {
+    const [hide, setHide] = useState(!typePassword);
+
+    return (
+        <View style={style} className="relative">
+            <Text>{text}</Text>
+            <TextInput
+                secureTextEntry={!hide}
+                placeholder={text}
+                className="border px-4 py-2 rounded-md"
+            />
+            {typePassword && (
+                <Entypo
+                    name={hide ? "eye-with-line" : "eye"}
+                    size={24}
+                    color="black"
+                    style={styles.icon}
+                    onPress={() => setHide((prev) => !prev)}
+                />
+            )}
+        </View>
+    );
+};
+
+export default CustomInput;

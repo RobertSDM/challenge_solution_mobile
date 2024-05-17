@@ -19,7 +19,7 @@ const Login = ({ navigation }) => {
                     <View className="space-y-10 flex items-center bg-white rounded-tr-[35px] p-4 w-full h-full pt-16">
                         <View className="space-y-6 w-4/5 ">
                             <CustomInput text={"Login"} />
-                            <CustomInput text={"Senha"} />
+                            <CustomInput text={"Senha"} typePassword={true} />
                             <View className="flex items-center flex-row justify-between">
                                 <Text>Lembrar de mim</Text>
                                 <Text>Esqueceu a senha?</Text>
@@ -35,7 +35,9 @@ const Login = ({ navigation }) => {
                                 <Text>Ainda não está cadastrado?</Text>
                                 <Text
                                     className="text-blue-500"
-                                    onPress={() => navigation.navigate("Login")}
+                                    onPress={() =>
+                                        navigation.navigate("Register")
+                                    }
                                 >
                                     Se cadastre
                                 </Text>

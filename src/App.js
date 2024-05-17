@@ -4,7 +4,8 @@ import Configuration from "./screens/Configuration";
 import { NavigationContainer } from "@react-navigation/native";
 import Login from "./screens/Login";
 import CompanyProfile from "./screens/CompanyProfile";
-import InfinityTimeline from "./screens/InfinityTimeline";
+import Register from "./screens/Resgister";
+import InfinityTimeline from "./screens/InfinityTimeline"
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -12,6 +13,13 @@ const App = () => {
     return (
         <NavigationContainer>
             <Navigator>
+                <Screen
+                    name="Register"
+                    component={Register}
+                    options={{
+                        headerShown: false,
+                    }}
+                />
                 <Screen
                     name="InfinityTimeline"
                     component={InfinityTimeline}
