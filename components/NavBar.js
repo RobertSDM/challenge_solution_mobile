@@ -13,11 +13,16 @@ const NavBar = ({ navigation }) => {
             <View
                 className="flex items-center justify-center bg-purple-200 p-3 rounded-full"
                 onTouchStart={() => {
-                    navigation.navigate("Configuration");
+                    navigation.navigate("CompanyProfile");
                 }}
             >
-                <FontAwesome6 name="gear" size={24} color="black" />
+                <MaterialCommunityIcons
+                    name="account"
+                    size={24}
+                    color="black"
+                />
             </View>
+
             <View
                 className="flex items-center justify-center bg-purple-200 p-3 rounded-full"
                 onTouchStart={() => {
@@ -29,14 +34,10 @@ const NavBar = ({ navigation }) => {
             <View
                 className="flex items-center justify-center bg-purple-200 p-3 rounded-full"
                 onTouchStart={() => {
-                    navigation.navigate("CompanyProfile");
+                    navigation.navigate("Configuration");
                 }}
             >
-                <MaterialCommunityIcons
-                    name="account"
-                    size={24}
-                    color="black"
-                />
+                <FontAwesome6 name="gear" size={24} color="black" />
             </View>
         </View>
     );

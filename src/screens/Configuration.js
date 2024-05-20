@@ -26,17 +26,17 @@ const Configuration = ({ navigation }) => {
                             action="Configuration"
                         />
                         <Option
-                            text=""
+                            text="Alterar icones da barra de navegação"
                             navigation={navigation}
                             action="Configuration"
                         />
                         <Option
-                            text=""
+                            text="Alterar cor do app"
                             navigation={navigation}
                             action="Configuration"
                         />
                         <Option
-                            text=""
+                            text="Configurações de privacidade"
                             navigation={navigation}
                             action="Configuration"
                         />
