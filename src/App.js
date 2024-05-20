@@ -10,19 +10,10 @@ import PassForgot from "./screens/PassForgot";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
-
-
 const App = () => {
     return (
         <NavigationContainer>
             <Navigator>
-                <Screen
-                    name="PassForgot"
-                    component={PassForgot}
-                    options={{
-                        headerShown: false,
-                    }}
-                />
                 <Screen
                     name="CompanyProfile"
                     component={CompanyProfile}
@@ -54,6 +45,13 @@ const App = () => {
                 <Screen
                     name="Register"
                     component={Register}
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <Screen
+                    name="PassForgot"
+                    component={PassForgot}
                     options={{
                         headerShown: false,
                     }}
