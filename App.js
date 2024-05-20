@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
-import MainLayout from "./layouts/MainLayout";
-import { LogProvider, loggedContext } from "./control/hooks/useLogContext";
-import AuthLayout from "./layouts/AuthLayout";
+import MainLayout from "./src/layouts/MainLayout";
+import { LogProvider, loggedContext } from "./src/control/hooks/useLogContext";
+import AuthLayout from "./src/layouts/AuthLayout";
 import { useContext } from "react";
 
 const App = () => {
