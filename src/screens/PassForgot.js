@@ -4,21 +4,20 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import AuthLayout from "../layouts/AuthLayout";
-import createUser from "../connection/register";
-import showNotification from "../control/hooks/showNotification";
 import useLogged from "../control/hooks/isLogged";
+import loginUser from "../connection/login";
+import showNotification from "../control/hooks/showNotification";
+import forgotPassword from "../connection/forgotPassword";
 
-const Register = ({ navigation }) => {
-    const [apelido, setApelido] = useState("");
+const PassForgot = ({ navigation }) => {
     const [login, setLogin] = useState("");
-    const [pass, setPass] = useState("");
-    const [confirmPass, setConfirmPass] = useState("");
-
+    const [newPass, setNewPass] = useState("");
+    const [confirmNewPass, setConfirmNewPass] = useState("");
     const [loggedStatus, changeLoggedStatus] = useLogged();
 
     useEffect(() => {
         if (loggedStatus) {
-            navigation.navigate("Login");
+            navigation.navigate("CompanyProfile");
             return;
         }
     }, [loggedStatus]);
@@ -26,51 +25,45 @@ const Register = ({ navigation }) => {
     return (
         <AuthLayout>
             <SafeAreaView className="pt-4 flex items-center w-full h-full">
-                <View className="bg-purple-700 pt-16 absolute h-[20%] w-full flex items-center"></View>
-                <View className="space-y-10 bg-purple-200 rounded-tr-2xl pt-4 w-full mt-[5%]">
-                    <View className="space-y-6 flex  items-center bg-white rounded-tr-[35px] p-4 w-full h-full pt-16">
+                <View className="bg-purple-700 pt-16 absolute h-[40%] w-full flex items-center"></View>
+                <View className="space-y-10 bg-purple-200 rounded-tr-2xl pt-4 w-full mt-[30%]">
+                    <View className="space-y-10 flex items-center  bg-white rounded-tr-[35px] p-4 w-full h-full pt-16">
                         <Text className="text-xl font-semibold">
-                            Se cadastre
+                            Esqueceu a senha
                         </Text>
                         <View className="space-y-6 w-4/5 ">
-                            <CustomInput
-                                text={"Apelido"}
-                                value={apelido}
-                                setValue={setApelido}
-                            />
                             <CustomInput
                                 text={"Login"}
                                 value={login}
                                 setValue={setLogin}
                             />
                             <CustomInput
-                                text={"Senha"}
+                                text={"Nova senha"}
                                 typePassword={true}
-                                value={pass}
-                                setValue={setPass}
+                                value={newPass}
+                                setValue={setNewPass}
                             />
                             <CustomInput
-                                text={"Confirmar senha"}
+                                text={"Cofirmar nova senha"}
                                 typePassword={true}
-                                value={confirmPass}
-                                setValue={setConfirmPass}
+                                value={confirmNewPass}
+                                setValue={setConfirmNewPass}
                             />
-                            <View className="flex items-center flex-row justify-between"></View>
                         </View>
                         <View className="flex items-center gap-y-4">
                             <CustomButton
-                                text="Registrar"
+                                text="Alterar"
                                 containerClassName={"px-20"}
                                 textClassName={"text-lg"}
                                 onTouchStart={() => {
-                                    if (pass !== confirmPass) {
+                                    if (newPass !== confirmNewPass) {
                                         showNotification(
                                             "senhas não são iguais"
                                         );
                                         return;
                                     } else if (
-                                        pass === "" ||
-                                        confirmPass === "" ||
+                                        newPass === "" ||
+                                        confirmNewPass === "" ||
                                         login === ""
                                     ) {
                                         showNotification(
@@ -79,28 +72,33 @@ const Register = ({ navigation }) => {
                                         return;
                                     }
 
-                                    createUser({
-                                        login,
-                                        apelido,
-                                        senha: pass,
-                                    }).then((res) => {
-                                        if (res) {
-                                            changeLoggedStatus();
-                                        } else {
-                                            showNotification(
-                                                "problema ao criar usuario"
-                                            );
+                                    forgotPassword(newPass, login).then(
+                                        (res) => {
+                                            if (res) {
+                                                showNotification(
+                                                    "senha alterada com sucesso"
+                                                );
+                                                navigation.navigate("Login");
+                                            } else {
+                                                showNotification(
+                                                    "login errado"
+                                                );
+                                            }
                                         }
-                                    });
+                                    );
                                 }}
                             />
                             <View>
-                                <Text>Já tem cadastro?</Text>
-                                <Text
-                                    className="text-blue-500"
-                                    onPress={() => navigation.navigate("Login")}
-                                >
-                                    Faça login
+                                <Text>
+                                    Voltar ao{" "}
+                                    <Text
+                                        className="text-blue-500"
+                                        onPress={() =>
+                                            navigation.navigate("Login")
+                                        }
+                                    >
+                                        login
+                                    </Text>
                                 </Text>
                             </View>
                         </View>
@@ -111,4 +109,4 @@ const Register = ({ navigation }) => {
     );
 };
 
-export default Register;
+export default PassForgot;

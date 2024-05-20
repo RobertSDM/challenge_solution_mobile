@@ -1,10 +1,19 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Option, OptionWithSwitch } from "../../components/Options";
 import MainLayout from "../layouts/MainLayout";
+import useLogged from "../control/hooks/isLogged";
 
 const Configuration = ({ navigation }) => {
+    const [loggedStatus, setLoggedStatus] = useLogged();
+
+    useEffect(() => {
+        if (!loggedStatus) {
+            navigation.navigate("Login");
+            return;
+        }
+    }, []);
     return (
         <MainLayout navigation={navigation}>
             <SafeAreaView className="px-4 pb-10 flex-grow">

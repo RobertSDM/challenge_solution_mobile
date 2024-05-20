@@ -5,24 +5,20 @@ import { NavigationContainer } from "@react-navigation/native";
 import Login from "./screens/Login";
 import CompanyProfile from "./screens/CompanyProfile";
 import Register from "./screens/Resgister";
-import InfinityTimeline from "./screens/InfinityTimeline"
+import InfinityTimeline from "./screens/InfinityTimeline";
+import PassForgot from "./screens/PassForgot";
 
 const { Navigator, Screen } = createNativeStackNavigator();
+
+
 
 const App = () => {
     return (
         <NavigationContainer>
             <Navigator>
                 <Screen
-                    name="Register"
-                    component={Register}
-                    options={{
-                        headerShown: false,
-                    }}
-                />
-                <Screen
-                    name="InfinityTimeline"
-                    component={InfinityTimeline}
+                    name="PassForgot"
+                    component={PassForgot}
                     options={{
                         headerShown: false,
                     }}
@@ -35,8 +31,8 @@ const App = () => {
                     }}
                 />
                 <Screen
-                    name="Login"
-                    component={Login}
+                    name="InfinityTimeline"
+                    component={InfinityTimeline}
                     options={{
                         headerShown: false,
                     }}
@@ -44,6 +40,20 @@ const App = () => {
                 <Screen
                     name="Configuration"
                     component={Configuration}
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <Screen
+                    name="Login"
+                    component={Login}
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <Screen
+                    name="Register"
+                    component={Register}
                     options={{
                         headerShown: false,
                     }}

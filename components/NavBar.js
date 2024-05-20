@@ -1,10 +1,10 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import {
     Ionicons,
     MaterialCommunityIcons,
     AntDesign,
-    Entypo,
+    FontAwesome6,
 } from "@expo/vector-icons";
 
 const NavBar = ({ navigation }) => {
@@ -16,15 +16,7 @@ const NavBar = ({ navigation }) => {
                     navigation.navigate("Configuration");
                 }}
             >
-                <AntDesign name="home" size={24} color="black" />
-            </View>
-            <View
-                className="flex items-center justify-center bg-purple-200 p-3 rounded-full"
-                onTouchStart={() => {
-                    navigation.navigate("Login");
-                }}
-            >
-                <Ionicons name="analytics" size={24} color="black" />
+                <FontAwesome6 name="gear" size={24} color="black" />
             </View>
             <View
                 className="flex items-center justify-center bg-purple-200 p-3 rounded-full"
@@ -32,7 +24,7 @@ const NavBar = ({ navigation }) => {
                     navigation.navigate("InfinityTimeline");
                 }}
             >
-                <Entypo name="shopping-cart" size={24} color="black" />
+                <Ionicons name="play" size={24} color="black" />
             </View>
             <View
                 className="flex items-center justify-center bg-purple-200 p-3 rounded-full"
