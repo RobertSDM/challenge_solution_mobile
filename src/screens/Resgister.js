@@ -3,10 +3,10 @@ import React, { useContext, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
-import createUser from "../connection/register";
-import showNotification from "../control/hooks/showNotification";
+
 import { loggedContext } from "../control/hooks/useLogContext";
 import { useNavigation } from "@react-navigation/native";
+import registerControllerCon from "../control/registerController";
 
 const Register = () => {
     const [apelido, setApelido] = useState("");
@@ -53,33 +53,13 @@ const Register = () => {
                             containerClassName={"px-20"}
                             textClassName={"text-lg"}
                             onTouchStart={() => {
-                                if (pass !== confirmPass) {
-                                    showNotification("senhas não são iguais");
-                                    return;
-                                } else if (
-                                    pass === "" ||
-                                    confirmPass === "" ||
-                                    login === ""
-                                ) {
-                                    showNotification(
-                                        "login ou senhas não podem ser vazias"
-                                    );
-                                    return;
-                                }
-
-                                createUser({
-                                    login,
+                                registerControllerCon(
                                     apelido,
-                                    senha: pass,
-                                }).then((res) => {
-                                    if (res) {
-                                        changeAuthenticatedStatus();
-                                    } else {
-                                        showNotification(
-                                            "problema ao criar usuario"
-                                        );
-                                    }
-                                });
+                                    login,
+                                    pass,
+                                    confirmPass,
+                                    changeAuthenticatedStatus
+                                );
                             }}
                         />
                         <View>

@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
-import showNotification from "../control/hooks/showNotification";
-import forgotPassword from "../connection/forgotPassword";
 import { useNavigation } from "@react-navigation/native";
+import passForgotControllerCon from "../control/passForgotController";
 
 const PassForgot = () => {
     const [login, setLogin] = useState("");
@@ -46,30 +45,12 @@ const PassForgot = () => {
                             containerClassName={"px-20"}
                             textClassName={"text-lg"}
                             onTouchStart={() => {
-                                if (newPass !== confirmNewPass) {
-                                    showNotification("senhas não são iguais");
-                                    return;
-                                } else if (
-                                    newPass === "" ||
-                                    confirmNewPass === "" ||
-                                    login === ""
-                                ) {
-                                    showNotification(
-                                        "login ou senhas não podem ser vazias"
-                                    );
-                                    return;
-                                }
-
-                                forgotPassword(newPass, login).then((res) => {
-                                    if (res) {
-                                        showNotification(
-                                            "senha alterada com sucesso"
-                                        );
-                                        navigation.navigate("Login");
-                                    } else {
-                                        showNotification("login errado");
-                                    }
-                                });
+                                passForgotControllerCon(
+                                    login,
+                                    newPass,
+                                    confirmNewPass,
+                                    navigation
+                                );
                             }}
                         />
                         <View>

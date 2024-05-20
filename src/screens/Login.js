@@ -3,10 +3,10 @@ import React, { useContext, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
-import loginUser from "../connection/login";
-import showNotification from "../control/hooks/showNotification";
+
 import { loggedContext } from "../control/hooks/useLogContext";
 import { useNavigation } from "@react-navigation/native";
+import loginControllerCon from "../control/LoginController";
 
 const Login = () => {
     const [login, setLogin] = useState("");
@@ -54,23 +54,10 @@ const Login = () => {
                             containerClassName={"px-20"}
                             textClassName={"text-lg"}
                             onTouchStart={() => {
-                                if (login === "" || pass === "") {
-                                    showNotification(
-                                        "login ou senha não podem ser vazios"
-                                    );
-                                    return;
-                                }
-
-                                loginUser({ login, senha: pass }).then(
-                                    (res) => {
-                                        if (res) {
-                                            changeAuthenticatedStatus();
-                                        } else {
-                                            showNotification(
-                                                "usuario ou senha errados"
-                                            );
-                                        }
-                                    }
+                                loginControllerCon(
+                                    login,
+                                    pass,
+                                    changeAuthenticatedStatus
                                 );
                             }}
                         />
