@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     icon: {
         position: "absolute",
         right: 10,
-        top: "50%",
+        top: "45%",
+        padding: 3,
     },
 });
 

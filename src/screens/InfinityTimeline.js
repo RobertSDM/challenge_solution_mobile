@@ -1,22 +1,11 @@
 import { View, Image } from "react-native";
-import React, { useEffect } from "react";
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import MainLayout from "../layouts/MainLayout";
 import { AntDesign, Entypo } from "@expo/vector-icons";
-import useLogged from "../control/hooks/isLogged";
 
-const InfinityTimeline = ({ navigation }) => {
-    const [loggedStatus, setLoggedStatus] = useLogged();
-
-    useEffect(() => {
-        if (!loggedStatus) {
-            navigation.navigate("Login");
-            return;
-        }
-    }, []);
+const InfinityTimeline = () => {
 
     return (
-        <MainLayout navigation={navigation}>
             <SafeAreaView className="p-4 border-red-500 flex-grow flex">
                 <Image
                     className="-z-10 absolute -translate-x-36"
@@ -50,7 +39,6 @@ const InfinityTimeline = ({ navigation }) => {
                     </View>
                 </View>
             </SafeAreaView>
-        </MainLayout>
     );
 };
 

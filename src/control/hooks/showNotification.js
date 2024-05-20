@@ -1,5 +1,11 @@
-import { ToastAndroid } from "react-native"
+import { ToastAndroid } from "react-native";
 
 export default createNotification = (msg) => {
-    ToastAndroid.showWithGravity(msg, ToastAndroid.LONG, ToastAndroid.TOP)
-}
+    ToastAndroid.showWithGravityAndOffset(
+        msg,
+        ToastAndroid.LONG,
+        ToastAndroid.TOP,
+        0,
+        30
+    );
+};

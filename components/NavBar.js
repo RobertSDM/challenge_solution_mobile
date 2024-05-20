@@ -3,15 +3,17 @@ import React from "react";
 import {
     Ionicons,
     MaterialCommunityIcons,
-    AntDesign,
     FontAwesome6,
 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const NavBar = ({ navigation }) => {
+const NavBar = () => {
+    const navigation = useNavigation();
+
     return (
         <View className="bg-purple-500 flex flex-row items-center py-3 justify-around fixed z-10">
             <View
-                className="flex items-center justify-center bg-purple-200 p-3 rounded-full"
+                className="flex items-center justify-center bg-purple-200 p-3 rounded-full active:scale-95"
                 onTouchStart={() => {
                     navigation.navigate("CompanyProfile");
                 }}
@@ -22,7 +24,6 @@ const NavBar = ({ navigation }) => {
                     color="black"
                 />
             </View>
-
             <View
                 className="flex items-center justify-center bg-purple-200 p-3 rounded-full"
                 onTouchStart={() => {

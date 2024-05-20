@@ -1,13 +1,23 @@
-import { View, Text } from "react-native";
 import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Login from "../screens/Login";
+import Register from "../screens/Resgister";
+import PassForgot from "../screens/PassForgot";
 
-const MainLayout = ({ children, color = "bg-white" }) => {
+const { Navigator, Screen } = createNativeStackNavigator();
+
+const AuthLayout = () => {
     return (
-        <View>
-            <View className={`${color} w-[100%] absolute z-10 h-8`}></View>
-            {children}
-        </View>
+        <Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
+            <Screen name="Login" component={Login} />
+            <Screen name="Register" component={Register} />
+            <Screen name="PassForgot" component={PassForgot} />
+        </Navigator>
     );
 };
 
-export default MainLayout;
+export default AuthLayout;
